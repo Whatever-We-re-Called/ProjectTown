@@ -6,6 +6,7 @@ class_name DropShadow extends Decal
 const SHADOW_TEXTURE = preload("res://common/drop_shadow/shadow.png")
 
 func _ready():
+	sorting_offset = -100
 	parent_sprite.frame_changed.connect(_setup_shadow)
 	_setup_shadow()
 

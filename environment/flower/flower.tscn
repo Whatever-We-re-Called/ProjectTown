@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://djeidkw73qnn2"]
+
+[ext_resource type="Texture2D" uid="uid://bj2phy2o7kkms" path="res://environment/flower/foliageSprites_flat.svg" id="1_k7ecg"]
+[ext_resource type="Script" path="res://common/custom_billboard.gd" id="2_rhhev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37tkc"]
+atlas = ExtResource("1_k7ecg")
+region = Rect2(0, 0, 127, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vvl2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37tkc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Flower" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8vvl2")
+
+[node name="CustomBillboard" type="Node3D" parent="AnimatedSprite3D"]
+script = ExtResource("2_rhhev")

@@ -3,12 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c1pq3w6epmlsx" path="res://player/player.tscn" id="1_pbuwq"]
 [ext_resource type="PackedScene" uid="uid://djeidkw73qnn2" path="res://environment/flower/flower.tscn" id="2_b4oae"]
 
-[gd_scene load_steps=6 format=3 uid="uid://dvi8fxs56k83e"]
-
-[ext_resource type="PackedScene" uid="uid://c1pq3w6epmlsx" path="res://player/player.tscn" id="1_pbuwq"]
-[ext_resource type="Texture2D" uid="uid://c6qqxrlumy21l" path="res://dboc16e-6486966f-c438-41f4-bce5-52dcb56934b0.png" id="2_r762t"]
-[ext_resource type="Script" path="res://shader/color_reveal.gd" id="3_3cgxn"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_fc3rk"]
 size = Vector3(10, 1, 10)
 
@@ -86,7 +80,6 @@ skeleton = NodePath("../..")
 [node name="Player" parent="." instance=ExtResource("1_pbuwq")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 
 [node name="Flower" parent="." instance=ExtResource("2_b4oae")]
@@ -94,15 +87,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 1)
 
 [node name="Flower2" parent="." instance=ExtResource("2_b4oae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2, -11)
-
-transform = Transform3D(0.953365, 0.13349, -0.270696, 0.266526, 0.0485216, 0.962606, 0.141633, -0.989862, 0.0106802, -0.716665, 3.22856, -0.511388)
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90299, 3.40534, 1.43073)
-cast_shadow = 0
-ignore_occlusion_culling = true
-pixel_size = 0.001
-texture = ExtResource("2_r762t")
-
-[node name="ColorReveal" type="Node" parent="Sprite3D"]
-script = ExtResource("3_3cgxn")

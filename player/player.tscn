@@ -1,10 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1pq3w6epmlsx"]
+[gd_scene load_steps=12 format=3 uid="uid://c1pq3w6epmlsx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ugjph"]
 [ext_resource type="Texture2D" uid="uid://58immuntvhtq" path="res://player/textures/vector_characters.svg" id="2_hwgot"]
 [ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="3_cjivr"]
-[ext_resource type="Script" path="res://common/custom_billboard.gd" id="3_dwy1o"]
 [ext_resource type="Script" path="res://common/drop_shadow/drop_shadow.gd" id="3_fmt61"]
+[ext_resource type="Script" path="res://common/custom_billboard.gd" id="3_txb44"]
+[ext_resource type="Script" path="res://player/player_camera.gd" id="4_vrhrx"]
+[ext_resource type="Script" path="res://player/controller/normal_player_controller_state.gd" id="5_t1f7r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ik0lg"]
+font_size = 32
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uitml"]
 radius = 0.35
@@ -25,28 +30,68 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_player")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
+script = ExtResource("4_vrhrx")
+target_player = NodePath("../CharacterBody3D")
+position_offset = Vector3(0, 5.5, 5)
+directional_offset_strength = 0.375
+speed = 1.5
+
+[node name="CenterTestLabel" type="Label" parent="Camera3D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_ik0lg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_ugjph")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
-size = 10.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_uitml")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.475, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.469117, 0)
 layers = 2
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 
-[node name="CustomBillboard" type="Node3D" parent="AnimatedSprite3D"]
-script = ExtResource("3_dwy1o")
+[node name="CustomBillboard" type="Node3D" parent="CharacterBody3D/AnimatedSprite3D"]
+script = ExtResource("3_txb44")
 
-[node name="DropShadow" type="Decal" parent="." node_paths=PackedStringArray("parent_sprite")]
-size = Vector3(2, 200, 2)
+[node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("parent_sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.95, 0)
+sorting_offset = -100.0
+size = Vector3(0.8, 100, 0.8)
 texture_albedo = ExtResource("3_cjivr")
+upper_fade = 0.0
+lower_fade = 0.0
 cull_mask = 1
 script = ExtResource("3_fmt61")
 parent_sprite = NodePath("../AnimatedSprite3D")
+
+[node name="PlayerControllerStates" type="Node" parent="CharacterBody3D"]
+
+[node name="Normal" type="Node" parent="CharacterBody3D/PlayerControllerStates"]
+script = ExtResource("5_t1f7r")
+movement_speed = 5.0
+ground_acceleration = 12.0
+ground_friction = 250.0
+air_acceleration = 4.0
+air_friction = 5.0
+jump_velocity = 7.5
+gravity_scale = 2.0

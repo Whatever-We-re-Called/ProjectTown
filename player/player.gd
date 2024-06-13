@@ -1,31 +1,43 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
+
+signal direction_changed(new_direction: Vector3)
+
+@onready var player_controller_states = $PlayerControllerStates
+
+var current_controller_state : PlayerControllerState
+var controller_states : Dictionary = {}
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+func _ready():
+	_init_controller_states()
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _init_controller_states():
+	for child in player_controller_states.get_children():
+		if child is PlayerControllerState:
+			child.init(self)
+			controller_states[child.name.to_lower()] = child
+	change_to_controller_state("normal")
+
+
+func _process(delta):
+	if current_controller_state != null:
+		current_controller_state._update(delta)
 
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
+	if current_controller_state != null:
+		current_controller_state._physics_update(delta)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
-	move_and_slide()
+func change_to_controller_state(new_controller_state_name: String):
+	var new_controller_state = controller_states.get(new_controller_state_name.to_lower())
+	if not new_controller_state: return
+	if current_controller_state == new_controller_state: return
+	
+	if current_controller_state != null:
+		current_controller_state._exit()
+	
+	new_controller_state._enter()
+	
+	current_controller_state = new_controller_state

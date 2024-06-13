@@ -27,7 +27,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	if current_controller_state != null:
+		current_controller_state.calculate_pre_physics()
 		current_controller_state._physics_update(delta)
+		current_controller_state.calculate_post_physics()
 
 
 func change_to_controller_state(new_controller_state_name: String):

@@ -11,11 +11,10 @@ class_name NormalPlayerControllerState extends PlayerControllerState
 
 func _physics_update(delta):
 	apply_gravity(delta, gravity_scale)
+	handle_ground_jump(jump_velocity)
 	if player.is_on_floor():
-		handle_jump(jump_velocity)
-		handle_movement(movement_speed, ground_acceleration, ground_friction, delta)
+		handle_horizontal_movement(movement_speed, ground_acceleration, ground_friction, delta)
 	else:
-		print("!")
-		handle_movement(movement_speed, air_acceleration, air_friction, delta)
+		handle_horizontal_movement(movement_speed, air_acceleration, air_friction, delta)
 	
 	player.move_and_slide()

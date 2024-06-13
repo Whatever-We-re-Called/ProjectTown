@@ -20,7 +20,7 @@ func _setup_shadow():
 	if parent_sprite != null:
 		var current_sprite_width = _get_current_sprite_width()
 		size = Vector3(current_sprite_width, 100.0, current_sprite_width)
-		position = Vector3(0.0, -49.95, 0.0)
+		position = Vector3(0.0, -49.995, 0.0)
 		texture_albedo = SHADOW_TEXTURE
 		upper_fade = 0.0
 		lower_fade = 0.0

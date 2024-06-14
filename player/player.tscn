@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1pq3w6epmlsx"]
+[gd_scene load_steps=11 format=3 uid="uid://c1pq3w6epmlsx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ugjph"]
 [ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="3_cjivr"]
 [ext_resource type="Script" path="res://common/drop_shadow/drop_shadow.gd" id="3_fmt61"]
 [ext_resource type="Texture2D" uid="uid://c26r45ro74nsu" path="res://player/textures/alienGreen_stand.png" id="3_jihrp"]
-[ext_resource type="Script" path="res://common/custom_billboard.gd" id="4_pxpd5"]
 [ext_resource type="Script" path="res://player/camera/player_camera.gd" id="4_vrhrx"]
 [ext_resource type="Script" path="res://player/controller/normal_player_controller_state.gd" id="5_t1f7r"]
 [ext_resource type="Script" path="res://player/controller/player_controller_state.gd" id="7_5r461"]
@@ -13,7 +12,7 @@
 font_size = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh6o1"]
-size = Vector3(1, 0.25, 0.25)
+size = Vector3(1, 0.25, 0.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4b3sy"]
 animations = [{
@@ -58,28 +57,28 @@ vertical_alignment = 1
 script = ExtResource("1_ugjph")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134298, -0.110166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.25)
 shape = SubResource("BoxShape3D_bh6o1")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.326694, 0)
+[node name="SpritePivot" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D/SpritePivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.285, 0)
 layers = 2
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 
-[node name="CustomBillboard" type="Node3D" parent="CharacterBody3D/AnimatedSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-script = ExtResource("4_pxpd5")
-
-[node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("parent_sprite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.9, 0)
+[node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("collision")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.995, 0)
 sorting_offset = -100.0
-size = Vector3(0.853333, 100, 0.853333)
+size = Vector3(1, 100, 1)
 texture_albedo = ExtResource("3_cjivr")
 upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1
 script = ExtResource("3_fmt61")
-parent_sprite = NodePath("../AnimatedSprite3D")
+update = null
+collision = NodePath("../CollisionShape3D")
 
 [node name="PlayerControllerStates" type="Node" parent="CharacterBody3D"]
 script = ExtResource("7_5r461")

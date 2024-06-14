@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm2d1ht6wrbej"]
+
+[ext_resource type="PackedScene" uid="uid://c1pq3w6epmlsx" path="res://player/player.tscn" id="1_4nfbk"]
+[ext_resource type="PackedScene" uid="uid://ba3chrt0wu6ke" path="res://environment/common/floor/floor.tscn" id="1_8fk65"]
+[ext_resource type="PackedScene" uid="uid://deu1gln40pa4c" path="res://environment/uncles_hardware_store/store_shelf/hardware_store_shelf.tscn" id="3_783m4"]
+[ext_resource type="PackedScene" uid="uid://dmbax1qknt223" path="res://environment/common/world_light/world_light.tscn" id="4_p5rv2"]
+
+[node name="UnclesHardwareStore" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_8fk65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(35, 1, 40)
+
+[node name="WorldLight" parent="." instance=ExtResource("4_p5rv2")]
+
+[node name="Player" parent="." instance=ExtResource("1_4nfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="HardwareStoreShelf" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="HardwareStoreShelf4" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+
+[node name="HardwareStoreShelf2" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
+
+[node name="HardwareStoreShelf5" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+
+[node name="HardwareStoreShelf3" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="HardwareStoreShelf6" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+
+[node name="HardwareStoreShelf13" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -15)
+
+[node name="HardwareStoreShelf14" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
+
+[node name="HardwareStoreShelf15" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
+
+[node name="HardwareStoreShelf16" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -15)
+
+[node name="HardwareStoreShelf17" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
+
+[node name="HardwareStoreShelf18" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+
+[node name="HardwareStoreShelf22" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -20)
+
+[node name="HardwareStoreShelf23" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -20)
+
+[node name="HardwareStoreShelf19" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
+
+[node name="HardwareStoreShelf21" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -20)
+
+[node name="HardwareStoreShelf20" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="HardwareStoreShelf7" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 0)
+
+[node name="HardwareStoreShelf8" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, 0)
+
+[node name="HardwareStoreShelf9" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, -5)
+
+[node name="HardwareStoreShelf10" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -5)
+
+[node name="HardwareStoreShelf11" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, -10)
+
+[node name="HardwareStoreShelf12" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -10)

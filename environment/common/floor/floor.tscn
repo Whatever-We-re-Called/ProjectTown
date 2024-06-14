@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3chrt0wu6ke"]
+
+[ext_resource type="Script" path="res://environment/common/floor/floor.gd" id="1_q6tvt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfpxw"]
+size = Vector3(35, 1, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1bap"]
+size = Vector3(35, 1, 40)
+
+[node name="Floor" type="StaticBody3D"]
+script = ExtResource("1_q6tvt")
+size = Vector3(25, 1, 25)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tfpxw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_d1bap")
+skeleton = NodePath("../..")

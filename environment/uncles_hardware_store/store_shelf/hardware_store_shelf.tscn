@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://deu1gln40pa4c"]
+
+[ext_resource type="Texture2D" uid="uid://v85fkfeyihjd" path="res://common/textures/square.png" id="1_ofwuq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7tje"]
+size = Vector3(5, 3, 2.125)
+
+[node name="HardwareStoreShelf" type="StaticBody3D"]
+
+[node name="SpritePivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="SpritePivot"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 1.5, 0)
+modulate = Color(0.392157, 0.392157, 0.392157, 1)
+texture = ExtResource("1_ofwuq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.0625)
+shape = SubResource("BoxShape3D_e7tje")

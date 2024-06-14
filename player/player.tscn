@@ -63,19 +63,16 @@ shape = SubResource("BoxShape3D_bh6o1")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.326694, 0)
-
 layers = 2
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 
 [node name="CustomBillboard" type="Node3D" parent="CharacterBody3D/AnimatedSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("4_pxpd5")
 
 [node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("parent_sprite")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.9, 0)
 sorting_offset = -100.0
 size = Vector3(0.853333, 100, 0.853333)
-
 texture_albedo = ExtResource("3_cjivr")
 upper_fade = 0.0
 lower_fade = 0.0

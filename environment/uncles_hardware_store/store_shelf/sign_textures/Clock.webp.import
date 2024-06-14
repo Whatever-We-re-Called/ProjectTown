@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2jostmh2cnnl"
-path.s3tc="res://.godot/imported/alienBlue_climb1.png-f1fda42141eb864f7341af32454dde71.s3tc.ctex"
+uid="uid://ccomqjw5swcla"
+path.s3tc="res://.godot/imported/Clock.webp-afbc33224a9043b656b78865f63907ca.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/textures/alienBlue_climb1.png"
-dest_files=["res://.godot/imported/alienBlue_climb1.png-f1fda42141eb864f7341af32454dde71.s3tc.ctex"]
+source_file="res://environment/uncles_hardware_store/store_shelf/sign_textures/Clock.webp"
+dest_files=["res://.godot/imported/Clock.webp-afbc33224a9043b656b78865f63907ca.s3tc.ctex"]
 
 [params]
 

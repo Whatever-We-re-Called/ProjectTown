@@ -66,6 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D/SpritePivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.285, 0)
 layers = 2
+alpha_cut = 1
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 
 [node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("collision")]
@@ -77,7 +78,6 @@ upper_fade = 0.0
 lower_fade = 0.0
 cull_mask = 1
 script = ExtResource("3_fmt61")
-update = null
 collision = NodePath("../CollisionShape3D")
 
 [node name="PlayerControllerStates" type="Node" parent="CharacterBody3D"]

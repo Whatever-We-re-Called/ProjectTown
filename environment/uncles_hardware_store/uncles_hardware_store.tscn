@@ -1,86 +1,211 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm2d1ht6wrbej"]
+[gd_scene load_steps=21 format=3 uid="uid://bm2d1ht6wrbej"]
 
 [ext_resource type="PackedScene" uid="uid://c1pq3w6epmlsx" path="res://player/player.tscn" id="1_4nfbk"]
 [ext_resource type="PackedScene" uid="uid://ba3chrt0wu6ke" path="res://environment/common/floor/floor.tscn" id="1_8fk65"]
 [ext_resource type="PackedScene" uid="uid://deu1gln40pa4c" path="res://environment/uncles_hardware_store/store_shelf/hardware_store_shelf.tscn" id="3_783m4"]
 [ext_resource type="PackedScene" uid="uid://dmbax1qknt223" path="res://environment/common/world_light/world_light.tscn" id="4_p5rv2"]
+[ext_resource type="PackedScene" uid="uid://cs8y4t0hu82d7" path="res://environment/uncles_hardware_store/store_counter/hardware_store_counter.tscn" id="5_hktnr"]
+[ext_resource type="PackedScene" uid="uid://du1wj6yekfga8" path="res://environment/uncles_hardware_store/store_shelf/hardware_store_shelf_sign.tscn" id="6_10ev3"]
+[ext_resource type="Texture2D" uid="uid://dgl3cjdtncknb" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/p-clamp-catagory-image.png" id="7_c6p1i"]
+[ext_resource type="Texture2D" uid="uid://t71uc2p7bmem" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/Padlock.svg.png" id="8_6qaow"]
+[ext_resource type="Texture2D" uid="uid://cb72h2nqviq2w" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/Wooden-Sign-Transparent.png" id="8_cbgec"]
+[ext_resource type="Texture2D" uid="uid://b5eaua3h6wto8" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/clothes-hanger-illustration-png.webp" id="9_dqpc0"]
+[ext_resource type="Texture2D" uid="uid://cj810cpkjfl2v" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/download.png" id="9_lrxb4"]
+[ext_resource type="Texture2D" uid="uid://dorslrfesicw8" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/2-22660_get-the-rope-ready-noose-with-no-background.png" id="10_08w8t"]
+[ext_resource type="Texture2D" uid="uid://fcegw1s3r5lo" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/pngtree-metal-spring-part-of-vehicle-png-image_10413086.png" id="10_dnakh"]
+[ext_resource type="Texture2D" uid="uid://ccomqjw5swcla" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/Clock.webp" id="10_gudvc"]
+[ext_resource type="Texture2D" uid="uid://b7vefx2klt21s" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/200px-LeadPipe_Model.png" id="10_lnokt"]
+[ext_resource type="Texture2D" uid="uid://bhrf2pne4otoq" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/51613-3-copper-wire-free-download-png-hd.png" id="11_dbncu"]
+[ext_resource type="Texture2D" uid="uid://c3a8xum64b54y" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/pngimg.com - cupboard_closet_PNG16740.png" id="11_wp76d"]
+[ext_resource type="Texture2D" uid="uid://mn6rj8aitglq" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/unnamed.png" id="12_8yk2m"]
+[ext_resource type="Texture2D" uid="uid://v4qinvwpyxj2" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/carrot-isolated-on-transparent-background-file-cut-out-ai-generated-png.webp" id="12_dvvg3"]
+[ext_resource type="Texture2D" uid="uid://4jamvywh34t3" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/Schlage-Knob-e1510031790637.webp" id="13_3og0m"]
 
 [node name="UnclesHardwareStore" type="Node3D"]
 
 [node name="Floor" parent="." instance=ExtResource("1_8fk65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(35, 1, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -12.5)
+size = Vector3(35, 1, 25)
 
 [node name="WorldLight" parent="." instance=ExtResource("4_p5rv2")]
 
 [node name="Player" parent="." instance=ExtResource("1_4nfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="HardwareStoreShelf" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-
-[node name="HardwareStoreShelf4" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
 [node name="HardwareStoreShelf2" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
-
-[node name="HardwareStoreShelf5" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
-
-[node name="HardwareStoreShelf3" parent="." instance=ExtResource("3_783m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 
-[node name="HardwareStoreShelf6" parent="." instance=ExtResource("3_783m4")]
+[node name="HardwareStoreShelf5" parent="." instance=ExtResource("3_783m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
 
-[node name="HardwareStoreShelf13" parent="." instance=ExtResource("3_783m4")]
+[node name="HardwareStoreShelf3" parent="." instance=ExtResource("3_783m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -15)
 
-[node name="HardwareStoreShelf14" parent="." instance=ExtResource("3_783m4")]
+[node name="HardwareStoreShelf6" parent="." instance=ExtResource("3_783m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
 
-[node name="HardwareStoreShelf15" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
-
-[node name="HardwareStoreShelf16" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -15)
-
-[node name="HardwareStoreShelf17" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
-
-[node name="HardwareStoreShelf18" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
-
-[node name="HardwareStoreShelf22" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -20)
-
-[node name="HardwareStoreShelf23" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -20)
-
-[node name="HardwareStoreShelf19" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
-
-[node name="HardwareStoreShelf21" parent="." instance=ExtResource("3_783m4")]
+[node name="HardwareStoreShelf13" parent="." instance=ExtResource("3_783m4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -20)
 
+[node name="HardwareStoreShelf14" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -20)
+
+[node name="HardwareStoreShelf15" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -20)
+
+[node name="HardwareStoreShelf16" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+
+[node name="HardwareStoreShelf17" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -25)
+
+[node name="HardwareStoreShelf18" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -25)
+
+[node name="HardwareStoreShelf22" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -25)
+
+[node name="HardwareStoreShelf23" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -25)
+
+[node name="HardwareStoreShelf19" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -25)
+
+[node name="HardwareStoreShelf21" parent="." instance=ExtResource("3_783m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -25)
+
 [node name="HardwareStoreShelf20" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 
 [node name="HardwareStoreShelf7" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
 
 [node name="HardwareStoreShelf8" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
 
 [node name="HardwareStoreShelf9" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
 
 [node name="HardwareStoreShelf10" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
 
 [node name="HardwareStoreShelf11" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
 
 [node name="HardwareStoreShelf12" parent="." instance=ExtResource("3_783m4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -15)
+
+[node name="HardwareStoreCounter" parent="." instance=ExtResource("5_hktnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, -5)
+
+[node name="HardwareStoreShelfSign" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.125, -12.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign"]
+transform = Transform3D(0.075, 0, 0, 0, 0.053033, 0.707107, 0, -0.053033, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("7_c6p1i")
+
+[node name="HardwareStoreShelfSign7" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 2.125, -7.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign7"]
+transform = Transform3D(0.125, 0, 0, 0, 0.0883883, 0.707107, 0, -0.0883883, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("8_cbgec")
+
+[node name="HardwareStoreShelfSign8" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.125, -17.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign8"]
+transform = Transform3D(0.075, 0, 0, 0, 0.053033, 0.707107, 0, -0.053033, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("9_lrxb4")
+
+[node name="HardwareStoreShelfSign20" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 2.125, -22.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign20"]
+transform = Transform3D(0.175, 0, 0, 0, 0.123744, 0.707107, 0, -0.123744, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("10_gudvc")
+
+[node name="HardwareStoreShelfSign21" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75, 2.125, -22.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign21"]
+transform = Transform3D(0.075, 0, 0, 0, 0.053033, 0.707107, 0, -0.053033, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("11_dbncu")
+
+[node name="HardwareStoreShelfSign22" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.125, 2.125, -27.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign22"]
+transform = Transform3D(0.175, 0, 0, 0, 0.123744, 0.707107, 0, -0.123744, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("12_8yk2m")
+
+[node name="HardwareStoreShelfSign24" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.625, 2.125, -27.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign24"]
+transform = Transform3D(0.038, 0, 0, 0, 0.0268701, 0.707107, 0, -0.0268701, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("12_dvvg3")
+
+[node name="HardwareStoreShelfSign23" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.875, 2.125, -27.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign23"]
+transform = Transform3D(0.125, 0, 0, 0, 0.0883883, 0.707107, 0, -0.0883883, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("13_3og0m")
+
+[node name="HardwareStoreShelfSign19" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.875, 2.125, -17.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign19"]
+transform = Transform3D(0.075, 0, 0, 0, 0.053033, 0.707107, 0, -0.053033, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("10_08w8t")
+
+[node name="HardwareStoreShelfSign10" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.125, -12.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign10"]
+transform = Transform3D(0.15, 0, 0, 0, 0.106066, 0.707107, 0, -0.106066, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("10_dnakh")
+
+[node name="HardwareStoreShelfSign2" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.125, 2.125, -12.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign2"]
+transform = Transform3D(0.09, 0, 0, 0, 0.0636396, 0.707107, 0, -0.0636396, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("8_6qaow")
+
+[node name="HardwareStoreShelfSign16" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75, 2.125, -17.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign16"]
+transform = Transform3D(0.045, 0, 0, 0, 0.0318198, 0.707107, 0, -0.0318198, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("9_dqpc0")
+
+[node name="HardwareStoreShelfSign17" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 2.125, -22.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign17"]
+transform = Transform3D(0.35, 0, 0, 0, 0.247487, 0.707107, 0, -0.247487, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("10_lnokt")
+
+[node name="HardwareStoreShelfSign18" parent="." instance=ExtResource("6_10ev3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.875, 2.125, -22.125)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreShelfSign18"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0707107, 0.707107, 0, -0.0707107, 0.707107, 0, 0.435, -0.413)
+alpha_cut = 1
+texture = ExtResource("11_wp76d")

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp7bvvjok880p"]
+[gd_scene load_steps=5 format=3 uid="uid://dp7bvvjok880p"]
 
 [ext_resource type="Texture2D" uid="uid://v85fkfeyihjd" path="res://common/textures/square.png" id="1_poo1b"]
+[ext_resource type="Script" path="res://common/interactions/interaction_area.gd" id="2_0yo2i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7tje"]
 size = Vector3(1, 0.703, 0.703)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bloes"]
+size = Vector3(2, 1, 2)
 
 [node name="HardwareStoreCounter" type="StaticBody3D"]
 
@@ -18,3 +22,12 @@ texture = ExtResource("1_poo1b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351501, -0.351563)
 shape = SubResource("BoxShape3D_e7tje")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+script = ExtResource("2_0yo2i")
+action_name = "Pick Up"
+label_y_offset = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_bloes")

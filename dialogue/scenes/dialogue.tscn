@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn4io5syiajqt"]
+
+[ext_resource type="Script" path="res://dialogue/scenes/dialogue_bubble.gd" id="1_mmm6s"]
+[ext_resource type="Texture2D" uid="uid://b64018bm3iqbf" path="res://dialogue/assets/bubble_tail.svg" id="1_v68j6"]
+[ext_resource type="Texture2D" uid="uid://b82dsdckxd5h7" path="res://dialogue/assets/tail_middle.svg" id="2_s5f1j"]
+[ext_resource type="Texture2D" uid="uid://blaj82puo3bhs" path="res://dialogue/assets/bubble_base.svg" id="3_nd2g8"]
+[ext_resource type="Script" path="res://dialogue/helper_classes/dialogue_viewport.gd" id="4_76ve4"]
+[ext_resource type="Texture2D" uid="uid://dm7pxicdvjj8t" path="res://dialogue/assets/bubble_connector.svg" id="5_2a6sy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dpusp"]
+viewport_path = NodePath("Text/SubViewport")
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_mmm6s")
+
+[node name="Tail" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.736101, 0)
+visible = false
+
+[node name="Left" type="Sprite3D" parent="Tail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, -1, 0)
+visible = false
+texture = ExtResource("1_v68j6")
+
+[node name="Middle" type="Sprite3D" parent="Tail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005, -1.02, 0)
+visible = false
+texture = ExtResource("2_s5f1j")
+
+[node name="Right" type="Sprite3D" parent="Tail"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, -1, 0)
+visible = false
+flip_h = true
+texture = ExtResource("1_v68j6")
+
+[node name="Bubble" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817608, 0)
+texture = ExtResource("3_nd2g8")
+region_rect = Rect2(0, 69.5, 201, 11)
+
+[node name="Text" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817608, 0.1)
+alpha_cut = 1
+texture = SubResource("ViewportTexture_dpusp")
+
+[node name="SubViewport" type="SubViewport" parent="Text"]
+transparent_bg = true
+size_2d_override = Vector2i(512, 512)
+script = ExtResource("4_76ve4")
+
+[node name="CenterContainer" type="CenterContainer" parent="Text/SubViewport"]
+custom_minimum_size = Vector2(512, 512)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Text/SubViewport/CenterContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[center][color=red]Lorem ipsum dolor sit amet, consectetur "
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="Connector" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.779636, 0)
+
+[node name="Left" type="Sprite3D" parent="Connector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.819, 0)
+visible = false
+flip_h = true
+texture = ExtResource("5_2a6sy")
+
+[node name="Right" type="Sprite3D" parent="Connector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.819, 0)
+visible = false
+texture = ExtResource("5_2a6sy")

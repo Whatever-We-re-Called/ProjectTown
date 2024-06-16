@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GlobalDialogues" load_steps=2 format=3 uid="uid://b76dut17gu2xx"]
+
+[ext_resource type="Script" path="res://dialogue/resource_scripts/global_dialogues.gd" id="1_tec42"]
+
+[resource]
+script = ExtResource("1_tec42")
+dialogues = Array[Resource("res://dialogue/resource_scripts/dialogue.gd")]([])

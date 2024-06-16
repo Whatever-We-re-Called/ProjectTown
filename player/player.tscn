@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1pq3w6epmlsx"]
+[gd_scene load_steps=12 format=3 uid="uid://c1pq3w6epmlsx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ugjph"]
-[ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="3_cjivr"]
 [ext_resource type="Script" path="res://common/drop_shadow/drop_shadow.gd" id="3_fmt61"]
 [ext_resource type="Texture2D" uid="uid://c26r45ro74nsu" path="res://player/textures/alienGreen_stand.png" id="3_jihrp"]
+[ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="4_kp15n"]
 [ext_resource type="Script" path="res://player/camera/player_camera.gd" id="4_vrhrx"]
 [ext_resource type="Script" path="res://player/controller/normal_player_controller_state.gd" id="5_t1f7r"]
 [ext_resource type="Script" path="res://player/controller/player_controller_state.gd" id="7_5r461"]
-[ext_resource type="Script" path="res://common/character_info.gd" id="9_46dfv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ik0lg"]
 font_size = 32
@@ -30,17 +29,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node3D"]
+[node name="PlayerRoot" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_player")]
+[node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target_player")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
 script = ExtResource("4_vrhrx")
-target_player = NodePath("../CharacterBody3D")
+target_player = NodePath("../PlayerCharacter")
 position_offset = Vector3(0, 5.5, 5)
 directional_offset_strength = 0.375
 speed = 1.5
 
-[node name="CenterTestLabel" type="Label" parent="Camera3D"]
+[node name="CenterTestLabel" type="Label" parent="PlayerCamera"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,42 +57,36 @@ label_settings = SubResource("LabelSettings_ik0lg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="PlayerCharacter" type="CharacterBody3D" parent="." groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_ugjph")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.25)
 shape = SubResource("BoxShape3D_bh6o1")
 
-<<<<<<< HEAD
-[node name="SpritePivot" type="Node3D" parent="CharacterBody3D"]
+[node name="SpritePivot" type="Node3D" parent="PlayerCharacter"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D/SpritePivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.285, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="PlayerCharacter/SpritePivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 layers = 2
 alpha_cut = 1
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 
-[node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("collision")]
+[node name="DropShadow" type="Decal" parent="PlayerCharacter" node_paths=PackedStringArray("collision")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.995, 0)
-
-[node name="CharacterInfo" type="Node3D" parent="CharacterBody3D/AnimatedSprite3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.231007, -0.231007)
-script = ExtResource("9_46dfv")
-sorting_offset = -100.0
 size = Vector3(1, 100, 1)
-texture_albedo = ExtResource("3_cjivr")
+texture_albedo = ExtResource("4_kp15n")
 upper_fade = 0.0
 lower_fade = 0.0
-cull_mask = 1
 script = ExtResource("3_fmt61")
 collision = NodePath("../CollisionShape3D")
 
-[node name="PlayerControllerStates" type="Node" parent="CharacterBody3D"]
+[node name="PlayerControllerStates" type="Node" parent="PlayerCharacter"]
 script = ExtResource("7_5r461")
 
-[node name="Normal" type="Node" parent="CharacterBody3D/PlayerControllerStates"]
+[node name="Normal" type="Node" parent="PlayerCharacter/PlayerControllerStates"]
 script = ExtResource("5_t1f7r")
 movement_speed = 5.0
 ground_acceleration = 12.0
@@ -103,12 +96,12 @@ air_friction = 5.0
 jump_velocity = 7.5
 gravity_scale = 2.0
 
-[node name="CoyoteTimeTimer" type="Timer" parent="CharacterBody3D/PlayerControllerStates"]
+[node name="CoyoteTimeTimer" type="Timer" parent="PlayerCharacter/PlayerControllerStates"]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true
 
-[node name="JumpBufferTimer" type="Timer" parent="CharacterBody3D/PlayerControllerStates"]
+[node name="JumpBufferTimer" type="Timer" parent="PlayerCharacter/PlayerControllerStates"]
 unique_name_in_owner = true
 wait_time = 0.1
 one_shot = true

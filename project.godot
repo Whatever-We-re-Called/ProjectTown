@@ -70,3 +70,5 @@ dialogue_continue={
 [layer_names]
 
 3d_render/layer_1="receive_drop_shadow"
+3d_physics/layer_1="world"
+3d_physics/layer_2="player"

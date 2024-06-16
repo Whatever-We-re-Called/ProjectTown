@@ -1,7 +1,7 @@
 @tool
 extends StaticBody3D
 
-@export var size: Vector3:
+@export var size: Vector2:
 	get:
 		return _size
 	set(value):
@@ -9,7 +9,7 @@ extends StaticBody3D
 			_size = value
 			_update_size()
 
-var _size: Vector3
+var _size: Vector2
 
 
 func _update_size():
@@ -17,6 +17,8 @@ func _update_size():
 	await get_tree().process_frame
 	
 	if $CollisionShape3D != null:
-		$CollisionShape3D.shape.size = _size
+		$CollisionShape3D.shape.size = Vector3(_size.x, 0.05, _size.y)
+		$CollisionShape3D.position.y = -0.025
 	if $MeshInstance3D != null:
+		$MeshInstance3D.rotation_degrees.x = -90.0
 		$MeshInstance3D.mesh.size = _size

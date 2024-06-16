@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bm2d1ht6wrbej"]
+[gd_scene load_steps=22 format=3 uid="uid://bm2d1ht6wrbej"]
 
 [ext_resource type="PackedScene" uid="uid://c1pq3w6epmlsx" path="res://player/player.tscn" id="1_4nfbk"]
 [ext_resource type="PackedScene" uid="uid://ba3chrt0wu6ke" path="res://environment/common/floor/floor.tscn" id="1_8fk65"]
@@ -20,12 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://mn6rj8aitglq" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/unnamed.png" id="12_8yk2m"]
 [ext_resource type="Texture2D" uid="uid://v4qinvwpyxj2" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/carrot-isolated-on-transparent-background-file-cut-out-ai-generated-png.webp" id="12_dvvg3"]
 [ext_resource type="Texture2D" uid="uid://4jamvywh34t3" path="res://environment/uncles_hardware_store/store_shelf/sign_textures/Schlage-Knob-e1510031790637.webp" id="13_3og0m"]
+[ext_resource type="PackedScene" uid="uid://dp7bvvjok880p" path="res://environment/uncles_hardware_store/store_item_box/hardware_store_item_box.tscn" id="21_vljn0"]
 
 [node name="UnclesHardwareStore" type="Node3D"]
 
 [node name="Floor" parent="." instance=ExtResource("1_8fk65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -12.5)
-size = Vector3(35, 1, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5)
+size = Vector2(35, 25)
 
 [node name="WorldLight" parent="." instance=ExtResource("4_p5rv2")]
 
@@ -209,3 +210,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.875, 2.125, -22.125)
 transform = Transform3D(0.1, 0, 0, 0, 0.0707107, 0.707107, 0, -0.0707107, 0.707107, 0, 0.435, -0.413)
 alpha_cut = 1
 texture = ExtResource("11_wp76d")
+
+[node name="HardwareStoreCounter5" parent="." instance=ExtResource("21_vljn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.75, 0, -3.375)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreCounter5"]
+transform = Transform3D(0.15, 0, 0, 0, 0.106066, 0.707107, 0, -0.106066, 0.707107, 0.000961304, 0.339477, -0.334023)
+alpha_cut = 1
+texture = ExtResource("13_3og0m")
+
+[node name="HardwareStoreCounter6" parent="." instance=ExtResource("21_vljn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0, -4.25)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreCounter6"]
+transform = Transform3D(0.4, 0, 0, 0, 0.282843, 0.707107, 0, -0.282843, 0.707107, 0.000961304, 0.339477, -0.334023)
+alpha_cut = 1
+texture = ExtResource("10_lnokt")
+
+[node name="HardwareStoreCounter8" parent="." instance=ExtResource("21_vljn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, -4.75)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreCounter8"]
+transform = Transform3D(0.2, 0, 0, 0, 0.141421, 0.707107, 0, -0.141421, 0.707107, 0.000961304, 0.339477, -0.334023)
+alpha_cut = 1
+texture = ExtResource("10_dnakh")
+
+[node name="HardwareStoreCounter7" parent="." instance=ExtResource("21_vljn0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.125, 0, -3)
+
+[node name="Sprite3D" type="Sprite3D" parent="HardwareStoreCounter7"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0707107, 0.707107, 0, -0.0707107, 0.707107, 0.000961304, 0.339477, -0.334023)
+alpha_cut = 1
+texture = ExtResource("8_6qaow")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1pq3w6epmlsx"]
+[gd_scene load_steps=14 format=3 uid="uid://c1pq3w6epmlsx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ugjph"]
 [ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="3_cjivr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://player/camera/player_camera.gd" id="4_vrhrx"]
 [ext_resource type="Script" path="res://player/controller/normal_player_controller_state.gd" id="5_t1f7r"]
 [ext_resource type="Script" path="res://player/controller/player_controller_state.gd" id="7_5r461"]
+[ext_resource type="Script" path="res://common/character_info.gd" id="9_46dfv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ik0lg"]
 font_size = 32
@@ -14,11 +15,15 @@ font_size = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh6o1"]
 size = Vector3(1, 0.25, 0.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy7xf"]
+atlas = ExtResource("3_jihrp")
+region = Rect2(0, 108, 128, 147)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4b3sy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jihrp")
+"texture": SubResource("AtlasTexture_fy7xf")
 }],
 "loop": true,
 "name": &"default",
@@ -60,6 +65,7 @@ script = ExtResource("1_ugjph")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.25)
 shape = SubResource("BoxShape3D_bh6o1")
 
+<<<<<<< HEAD
 [node name="SpritePivot" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
@@ -71,6 +77,10 @@ sprite_frames = SubResource("SpriteFrames_4b3sy")
 
 [node name="DropShadow" type="Decal" parent="CharacterBody3D" node_paths=PackedStringArray("collision")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.995, 0)
+
+[node name="CharacterInfo" type="Node3D" parent="CharacterBody3D/AnimatedSprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, -0.231007, -0.231007)
+script = ExtResource("9_46dfv")
 sorting_offset = -100.0
 size = Vector3(1, 100, 1)
 texture_albedo = ExtResource("3_cjivr")

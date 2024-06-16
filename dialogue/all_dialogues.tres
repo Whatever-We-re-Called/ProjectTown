@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="GlobalDialogues" load_steps=5 format=3 uid="uid://bw5nvwalp1xff"]
+
+[ext_resource type="Script" path="res://dialogue/resource_scripts/dialogue.gd" id="1_gworc"]
+[ext_resource type="Script" path="res://dialogue/resource_scripts/global_dialogues.gd" id="2_i88tx"]
+
+[sub_resource type="Resource" id="Resource_omuiv"]
+script = ExtResource("1_gworc")
+key = "player.test"
+text = "Hello! This is a test of the dialogue system."
+position_override = 2
+auto_calculate = true
+timing_override = -1.0
+next_key = "player.test.2"
+auto_continue = false
+linger_time = 3.0
+
+[sub_resource type="Resource" id="Resource_esmq3"]
+script = ExtResource("1_gworc")
+key = "player.test.2"
+text = "This is a follow up dialogue."
+position_override = 2
+auto_calculate = true
+timing_override = -1.0
+next_key = ""
+auto_continue = false
+linger_time = 3.0
+
+[resource]
+script = ExtResource("2_i88tx")
+dialogues = Array[ExtResource("1_gworc")]([SubResource("Resource_omuiv"), SubResource("Resource_esmq3")])

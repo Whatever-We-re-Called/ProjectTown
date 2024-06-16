@@ -9,9 +9,13 @@ void fragment() {
 
 	vec4 color = texture(sprite_texture, UV);
 	float gray = (color.r + color.g + color.b) / 3.0;
-    ALBEDO = vec3(gray);
 
+	
+	ALPHA = color.a;
     if (enabled && mask_value < 1.0) {
-        
+        ALBEDO = vec3(gray);
     }
+	else {
+		ALBEDO = color.rgb;
+	}
 }

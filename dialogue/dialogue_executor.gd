@@ -27,9 +27,9 @@ func _process(delta):
 		
 		var size = _get_node_rect(instance.character)
 		match instance.position:
-			DialogueManager.DialoguePosition.MIDDLE: dialogue.position.y = (size.y / 2) + .1
-			DialogueManager.DialoguePosition.LEFT: dialogue.position = Vector3(-(size.x / 2) - 1.5, .75, 0)
-			DialogueManager.DialoguePosition.RIGHT: dialogue.position = Vector3((size.x / 2) + 1.5, .75, 0)
+			DialogueManager.DialoguePosition.MIDDLE: dialogue.position.y = (size.y / 2) + .75
+			DialogueManager.DialoguePosition.LEFT: dialogue.position = Vector3(-(size.x / 2) - 1.3, .75, 0)
+			DialogueManager.DialoguePosition.RIGHT: dialogue.position = Vector3((size.x / 2) + 1.3, .75, 0)
 			
 		instance.character.add_child(dialogue)
 		

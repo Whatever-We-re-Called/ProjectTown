@@ -7,7 +7,7 @@
 script = ExtResource("1_gworc")
 key = "player.test"
 text = "Hello! This is a test of the dialogue system."
-position_override = 1
+position_override = 2
 auto_calculate = true
 timing_override = -1.0
 next_key = "player.test.2"

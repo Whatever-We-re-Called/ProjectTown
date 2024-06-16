@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1pq3w6epmlsx"]
+[gd_scene load_steps=14 format=3 uid="uid://c1pq3w6epmlsx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ugjph"]
 [ext_resource type="Texture2D" uid="uid://1038dim0rv5u" path="res://common/drop_shadow/shadow.png" id="3_cjivr"]
@@ -16,11 +16,15 @@ font_size = 32
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh6o1"]
 size = Vector3(1, 0.25, 0.25)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy7xf"]
+atlas = ExtResource("3_jihrp")
+region = Rect2(0, 108, 128, 147)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4b3sy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_jihrp")
+"texture": SubResource("AtlasTexture_fy7xf")
 }],
 "loop": true,
 "name": &"default",

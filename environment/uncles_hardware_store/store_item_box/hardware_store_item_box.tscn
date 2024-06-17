@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp7bvvjok880p"]
+[gd_scene load_steps=6 format=3 uid="uid://dp7bvvjok880p"]
 
+[ext_resource type="Script" path="res://environment/uncles_hardware_store/store_item_box/hardware_store_item_box.gd" id="1_gehpf"]
 [ext_resource type="Texture2D" uid="uid://v85fkfeyihjd" path="res://common/textures/square.png" id="1_poo1b"]
 [ext_resource type="Script" path="res://common/interactions/interaction_area.gd" id="2_0yo2i"]
 
@@ -9,7 +10,13 @@ size = Vector3(1, 0.703, 0.703)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bloes"]
 size = Vector3(2, 1, 2)
 
-[node name="HardwareStoreCounter" type="StaticBody3D"]
+[node name="HardwareStoreItemBox" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_gehpf")
 
 [node name="SpritePivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
@@ -24,6 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351501, -0.351563)
 shape = SubResource("BoxShape3D_e7tje")
 
 [node name="InteractionArea" type="Area3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_0yo2i")
 action_name = "Pick Up"
 label_y_offset = 2.0
@@ -31,3 +39,5 @@ label_y_offset = 2.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_bloes")
+
+[connection signal="called" from="InteractionArea" to="." method="_on_interaction_area_called"]

@@ -17,4 +17,4 @@ func _physics_update(delta):
 	else:
 		handle_horizontal_movement(movement_speed, air_acceleration, air_friction, delta)
 	
-	player.move_and_slide()
+	player.handle_physics_move()

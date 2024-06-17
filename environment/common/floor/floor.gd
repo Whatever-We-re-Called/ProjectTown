@@ -17,8 +17,8 @@ func _update_size():
 	await get_tree().process_frame
 	
 	if $CollisionShape3D != null:
-		$CollisionShape3D.shape.size = Vector3(_size.x, 0.05, _size.y)
-		$CollisionShape3D.position.y = -0.025
+		$CollisionShape3D.shape.size = Vector3(_size.x, 1.0, _size.y)
+		$CollisionShape3D.position.y = -0.5
 	if $MeshInstance3D != null:
 		$MeshInstance3D.rotation_degrees.x = -90.0
 		$MeshInstance3D.mesh.size = _size

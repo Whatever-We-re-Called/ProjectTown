@@ -71,7 +71,8 @@ func _lerp_velocity(new_x_target: float, new_z_target: float, delta: float):
 
 
 func apply_gravity(delta: float, gravity_scale: float = 1.0):
-	player.velocity.y -= GRAVITY * gravity_scale * delta
+	if not player.is_on_floor():
+		player.velocity.y -= GRAVITY * gravity_scale * delta
 
 
 func handle_ground_jump(jump_velocity: float):

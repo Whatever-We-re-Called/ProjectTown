@@ -12,7 +12,9 @@ var can_interact = true
 
 
 func _process(delta):
+	print(active_areas.size(), " ", can_interact)
 	if active_areas.size() > 0 and can_interact:
+		print("A")
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		interact_label.text = BASE_TEXT + active_areas[0].action_name
 		interaction_sprite.global_position = active_areas[0].global_position
@@ -42,8 +44,11 @@ func unregister_area(area: InteractionArea):
 func _input(event):
 	if event.is_action_pressed("interact") and can_interact:
 		if active_areas.size() > 0:
+			var active_area = active_areas[0]
+			
 			can_interact = false
 			interact_label.hide()
-			await active_areas[0].interact.call()
+			active_area.called.emit()
+			await active_area.finished
 			
 			can_interact = true

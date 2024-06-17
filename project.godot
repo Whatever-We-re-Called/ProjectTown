@@ -78,3 +78,8 @@ interact={
 3d_render/layer_1="receive_drop_shadow"
 3d_physics/layer_1="world"
 3d_physics/layer_2="player"
+3d_physics/layer_3="items"
+
+[physics]
+
+3d/run_on_separate_thread=true

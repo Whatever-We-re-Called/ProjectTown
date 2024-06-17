@@ -12,7 +12,7 @@
 font_size = 32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh6o1"]
-size = Vector3(1, 0.25, 0.5)
+size = Vector3(1, 1.25, 0.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy7xf"]
 atlas = ExtResource("3_jihrp")
@@ -59,10 +59,12 @@ vertical_alignment = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" parent="." groups=["player"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ugjph")
+physics_push_force = 500.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.25)
 shape = SubResource("BoxShape3D_bh6o1")
 
 [node name="SpritePivot" type="Node3D" parent="PlayerCharacter"]
@@ -82,6 +84,10 @@ upper_fade = 0.0
 lower_fade = 0.0
 script = ExtResource("3_fmt61")
 collision = NodePath("../CollisionShape3D")
+
+[node name="PickUpSlot" type="Node3D" parent="PlayerCharacter"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="PlayerControllerStates" type="Node" parent="PlayerCharacter"]
 script = ExtResource("7_5r461")

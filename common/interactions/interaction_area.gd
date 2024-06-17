@@ -1,5 +1,8 @@
 class_name InteractionArea extends Area3D
 
+signal called
+signal finished
+
 @export var action_name: String = "Interact"
 @export var label_y_offset: float = 0
 
@@ -15,10 +18,8 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print("enter")
 	InteractionManager.register_area(self)
 
 
 func _on_body_exited(body):
-	print("exit")
 	InteractionManager.unregister_area(self)

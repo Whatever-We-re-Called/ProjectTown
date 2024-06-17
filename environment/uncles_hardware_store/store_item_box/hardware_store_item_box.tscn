@@ -10,7 +10,7 @@ size = Vector3(1, 0.703, 0.703)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bloes"]
 size = Vector3(2, 1, 2)
 
-[node name="HardwareStoreItemBox" type="RigidBody3D"]
+[node name="HardwareStoreItemBox" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 7
 axis_lock_angular_x = true

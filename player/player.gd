@@ -51,32 +51,29 @@ func change_to_controller_state(new_controller_state_name: String):
 
 
 func handle_physics_move():
-	print(velocity)
-	move_and_slide()
-	print(velocity)
-	#if move_and_slide():
-		#for i in get_slide_collision_count():
-			#var col = get_slide_collision(i)
-			#if col.get_collider() is RigidBody3D:
-				#print(col.get_collider_velocity())
-				#if col.get_collider_velocity() == Vector3.DOWN:
-					#col.get_collider().apply_force(col.get_normal() * -physics_push_force)
+	if move_and_slide():
+		for i in get_slide_collision_count():
+			var col = get_slide_collision(i)
+			if col.get_collider() is RigidBody3D:
+				print(col.get_collider().sleeping)
+				col.get_collider().sleeping = false
 
 
-func pick_up_item(rigid_body: RigidBody3D):
-	print("pick up")
-	rigid_body.reparent(pick_up_slot)
-	rigid_body.position = Vector3.ZERO
-	rigid_body.freeze = true
+func pick_up_item(item_body: ItemBody3D):
+	item_body.reparent(pick_up_slot)
+	item_body.position = Vector3.ZERO
+	item_body.freeze = true
+	item_body.enable_collision_shapes(false)
 	
 	picked_up_item.emit()
 
 
 func drop_item():
 	if pick_up_slot.get_children().size() > 0:
-		var rigid_body = pick_up_slot.get_children()[0]
-		rigid_body.reparent(get_tree().root)
-		rigid_body.freeze = false
+		var item_body = pick_up_slot.get_children()[0]
+		item_body.reparent(get_tree().root)
+		item_body.freeze = false
+		item_body.enable_collision_shapes(true)
 		
 		dropped_item.emit()
 

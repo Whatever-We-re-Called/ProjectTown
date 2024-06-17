@@ -59,7 +59,7 @@ vertical_alignment = 1
 
 [node name="PlayerCharacter" type="CharacterBody3D" parent="." groups=["player"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_ugjph")
 physics_push_force = 500.0
 
@@ -87,7 +87,7 @@ collision = NodePath("../CollisionShape3D")
 
 [node name="PickUpSlot" type="Node3D" parent="PlayerCharacter"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0.25, 0.125)
 
 [node name="PlayerControllerStates" type="Node" parent="PlayerCharacter"]
 script = ExtResource("7_5r461")

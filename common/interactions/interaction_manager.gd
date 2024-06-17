@@ -17,6 +17,7 @@ func _process(delta):
 		interact_label.text = BASE_TEXT + active_areas[0].action_name
 		interaction_sprite.global_position = active_areas[0].global_position
 		interaction_sprite.global_position.y += active_areas[0].label_y_offset
+		print(interaction_sprite.global_position)
 		interaction_sprite.rotation_degrees.x = -45.0
 		interaction_sprite.show()
 	else:
@@ -45,7 +46,7 @@ func _input(event):
 			var active_area = active_areas[0]
 			
 			can_interact = false
-			interact_label.hide()
+			interaction_sprite.hide()
 			active_area.called.emit()
 			await active_area.finished
 			

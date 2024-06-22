@@ -1,4 +1,5 @@
-extends Node3D
+extends Node2D
+class_name DialogueBubble
 
 signal on_complete
 
@@ -12,9 +13,10 @@ func set_instance(instance: DialogueInstance):
 	self.instance = instance
 	instance.scene = self
 	
-	$Text/SubViewport/CenterContainer/RichTextLabel.bbcode_enabled = true
-	$Text/SubViewport/CenterContainer/RichTextLabel.visible_ratio = 0
-	$Text/SubViewport/CenterContainer/RichTextLabel.text = "[center]" + instance.parsed_text.to_bbcode_text()
+	$Text/RichTextLabel.bbcode_enabled = true
+	$Text/RichTextLabel.visible_ratio = 0
+	$Text/RichTextLabel.text = "[center]" + instance.parsed_text.to_bbcode_text()
+	await DialogueManager.get_tree().process_frame
 	
 	if instance.previous:
 		show_bubble_with_connector(instance.position, instance.previous)
@@ -24,28 +26,35 @@ func set_instance(instance: DialogueInstance):
 
 func show_bubble_with_tail(position: DialogueManager.DialoguePosition):
 	$Bubble.scale.y = _get_target_bubble_scale()
-	$Bubble.position.y = _get_target_bubble_height()
+	$Bubble.position.y = -_get_target_bubble_height()
+	
+	var size = instance.get_character_rect()
+	match position:
+		DialogueManager.DialoguePosition.MIDDLE: self.position.y = -(size.y / 2) - 35
+		DialogueManager.DialoguePosition.LEFT: self.position = Vector2(-(size.x / 2) - 95, -35)
+		DialogueManager.DialoguePosition.RIGHT: self.position = Vector2((size.x / 2) + 95, -35)
+	
 	set_tail(position)
 
 
 func show_bubble_with_connector(position: DialogueManager.DialoguePosition, previous):
 	$Bubble.scale.y = _get_target_bubble_scale()
-	$Bubble.position.y = _get_target_bubble_height()
+	$Bubble.position.y = -_get_target_bubble_height()
 	
-	self.position.y = previous.scene._get_target_bubble_height() + .9
+	self.position.y = -(previous.scene._get_target_bubble_height() * 2)
 	match position:
-		DialogueManager.DialoguePosition.LEFT: self.position.x = -.75
-		_: self.position.x = .75
+		DialogueManager.DialoguePosition.LEFT: self.position.x = -75
+		_: self.position.x = 75
 	
 	set_connector(position, previous)
 
 
 func _get_target_bubble_height() -> float:
-	return ($Bubble.texture.get_height() * $Bubble.pixel_size * _get_target_bubble_scale()) / 2
+	return ($Bubble.texture.get_height() * _get_target_bubble_scale()) / 2
 
 
 func _get_target_bubble_scale() -> float:
-	return max(1, $Text/SubViewport/CenterContainer/RichTextLabel.size.y / SCALE_1_SIZE)
+	return max(1, $Text/RichTextLabel.size.y / SCALE_1_SIZE)
 
 
 func set_tail(position: DialogueManager.DialoguePosition):
@@ -70,14 +79,14 @@ func set_connector(position: DialogueManager.DialoguePosition, previous):
 func start_typing():
 	var target_time = 0.0
 	if instance.auto_calculate or instance.timing_override == -1:
-		target_time = instance.parsed_text.cleaned_text.length() / UserSettings.type_speed
+		target_time = float(instance.parsed_text.cleaned_text.length()) / UserSettings.type_speed
 	elif not instance.auto_calculate:
 		target_time = instance.timing_override
 		
 	var time = 0.0
-	while $Text/SubViewport/CenterContainer/RichTextLabel.visible_ratio < 1:
+	while $Text/RichTextLabel.visible_ratio < 1:
 		time += get_process_delta_time()
-		$Text/SubViewport/CenterContainer/RichTextLabel.visible_ratio = min(1, time / target_time)
+		$Text/RichTextLabel.visible_ratio = min(1, time / target_time)
 		await get_tree().process_frame
 		
 	await _set_state_finished()
@@ -87,9 +96,12 @@ func start_typing():
 		on_complete.emit()
 
 
-func handle_input():
+func handle_input(type: String):
+	if type != "continue":
+		return
+	
 	if state == State.TYPING:
-		$Text/SubViewport/CenterContainer/RichTextLabel.visible_ratio = 1
+		$Text/RichTextLabel.visible_ratio = 1
 		_set_state_finished()
 	else:
 		if not awaiting_finish_timeout:
@@ -104,10 +116,8 @@ func _set_state_finished():
 
 
 func _process(_delta):
-	$Text.position = $Bubble.position
-	$Text.position.z = 0.1
-	
-
+	$Text.position = $Bubble.position - ($Text.size / 2)
+	$Text.z_index = 1
 
 enum State {
 	TYPING,

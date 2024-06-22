@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://ee6s01idne7u"]
+
+[ext_resource type="Texture2D" uid="uid://ccuk6pfhd38fr" path="res://ui/framework/rhombus.svg" id="1_lqkcu"]
+[ext_resource type="PackedScene" uid="uid://dkw223f1svhpi" path="res://ui/framework/presets/ScaleHoverable.tscn" id="2_ge7l3"]
+[ext_resource type="PackedScene" uid="uid://irl2ycmnbgl" path="res://ui/framework/presets/tooltip/tooltip.tscn" id="5_oaf5u"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Rhombus4" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-158, -4)
+texture = ExtResource("1_lqkcu")
+
+[node name="Control" type="Control" parent="Rhombus4"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.18
+offset_top = -36.445
+offset_right = 0.18
+offset_bottom = -36.445
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(0.775, 0.775)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScaleHoverable" parent="Rhombus4" instance=ExtResource("2_ge7l3")]
+
+[node name="Rhombus3" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(152, -2)
+texture = ExtResource("1_lqkcu")
+
+[node name="Control" type="Control" parent="Rhombus3"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.18
+offset_top = -36.445
+offset_right = 0.18
+offset_bottom = -36.445
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(0.775, 0.775)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TooltipText" type="Label" parent="Rhombus3"]
+offset_left = 31.0
+offset_top = 18.0
+offset_right = 129.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "test test test"
+
+[node name="Tooltip" parent="Rhombus3" node_paths=PackedStringArray("ui_parent") instance=ExtResource("5_oaf5u")]
+ui_parent = NodePath("..")

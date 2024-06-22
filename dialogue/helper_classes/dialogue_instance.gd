@@ -21,7 +21,7 @@ var complete = false
 
 func _init(unparsed_text: String, character: Node3D,
 		response_options: Array[ResponseOption] = [],
-		auto_calculate: bool = true, timing_override: float = 5,
+		auto_calculate: bool = true, timing_override: float = -1,
 		auto_continue: bool = true, linger_time: float = 3):
 			
 	self.parsed_text = TextParser.parse(unparsed_text)
@@ -31,3 +31,10 @@ func _init(unparsed_text: String, character: Node3D,
 	self.timing_override = timing_override
 	self.auto_continue = auto_continue and not UserSettings.require_input_for_dialogues
 	self.linger_time = linger_time
+	
+	
+func get_character_rect():
+	if character is AnimatedSprite3D:
+		return character.sprite_frames.get_frame_texture(character.animation, 0).get_size()
+	if character is Sprite3D:
+		return character.texture.get_size()

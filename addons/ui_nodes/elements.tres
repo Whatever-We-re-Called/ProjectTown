@@ -1,0 +1,173 @@
+[gd_resource type="Resource" script_class="UIElementResource" load_steps=36 format=3 uid="uid://c652i0vkm5xvd"]
+
+[ext_resource type="Script" path="res://addons/ui_nodes/ui_element_resource.gd" id="1_shimw"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_click.gd" id="2_j034j"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hide.gd" id="3_vn4e4"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_show.gd" id="4_u12yp"]
+[ext_resource type="Script" path="res://ui/framework/executors/color.gd" id="5_10vud"]
+[ext_resource type="Script" path="res://ui/framework/actions/grouping/ui_group.gd" id="5_i5t7o"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_enter.gd" id="5_kgpad"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_exit.gd" id="6_a6b52"]
+[ext_resource type="Script" path="res://ui/framework/actions/grouping/ui_loop.gd" id="6_hl0ty"]
+[ext_resource type="Script" path="res://ui/framework/executors/opacity.gd" id="6_wu6qv"]
+[ext_resource type="Script" path="res://ui/framework/actions/grouping/break_loop.gd" id="7_8lhqa"]
+[ext_resource type="Script" path="res://ui/framework/executors/rotation.gd" id="7_q8pwq"]
+[ext_resource type="Script" path="res://ui/framework/executors/scale.gd" id="8_bagu8"]
+[ext_resource type="Script" path="res://ui/framework/executors/translate.gd" id="9_coqhf"]
+[ext_resource type="Script" path="res://ui/framework/executors/wait.gd" id="10_qvlaw"]
+[ext_resource type="Script" path="res://ui/framework/executors/method_call.gd" id="16_poxns"]
+
+[sub_resource type="Resource" id="Resource_sn1gn"]
+script = ExtResource("1_shimw")
+name = "OnClick"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("2_j034j")
+index = 2
+
+[sub_resource type="Resource" id="Resource_byini"]
+script = ExtResource("1_shimw")
+name = "OnHide"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("3_vn4e4")
+index = 3
+
+[sub_resource type="Resource" id="Resource_kmhgk"]
+script = ExtResource("1_shimw")
+name = "OnShow"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("4_u12yp")
+index = 4
+
+[sub_resource type="Resource" id="Resource_5xfje"]
+script = ExtResource("1_shimw")
+name = "OnHoverEnter"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("5_kgpad")
+index = 5
+
+[sub_resource type="Resource" id="Resource_kbpsp"]
+script = ExtResource("1_shimw")
+name = "OnHoverExit"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("6_a6b52")
+index = 6
+
+[sub_resource type="Resource" id="Resource_4v56w"]
+script = ExtResource("1_shimw")
+name = "Actions"
+children = Array[ExtResource("1_shimw")]([SubResource("Resource_sn1gn"), SubResource("Resource_byini"), SubResource("Resource_kmhgk"), SubResource("Resource_5xfje"), SubResource("Resource_kbpsp")])
+tree_color_override = Color(0, 0, 0, 1)
+index = 1
+
+[sub_resource type="Resource" id="Resource_rfmdq"]
+script = ExtResource("1_shimw")
+name = "Group"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("5_i5t7o")
+index = 8
+
+[sub_resource type="Resource" id="Resource_lx261"]
+script = ExtResource("1_shimw")
+name = "Loop"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("6_hl0ty")
+index = 9
+
+[sub_resource type="Resource" id="Resource_u2ele"]
+script = ExtResource("1_shimw")
+name = "BreakLoop"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("7_8lhqa")
+index = 10
+
+[sub_resource type="Resource" id="Resource_lstfv"]
+script = ExtResource("1_shimw")
+name = "Grouping"
+children = Array[ExtResource("1_shimw")]([SubResource("Resource_rfmdq"), SubResource("Resource_lx261"), SubResource("Resource_u2ele")])
+tree_color_override = Color(0, 0, 0, 1)
+index = 7
+
+[sub_resource type="Resource" id="Resource_2nkcc"]
+script = ExtResource("1_shimw")
+name = "Color"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("5_10vud")
+index = 12
+
+[sub_resource type="Resource" id="Resource_lic11"]
+script = ExtResource("1_shimw")
+name = "Opacity"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("6_wu6qv")
+index = 13
+
+[sub_resource type="Resource" id="Resource_lshju"]
+script = ExtResource("1_shimw")
+name = "Rotation"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("7_q8pwq")
+index = 14
+
+[sub_resource type="Resource" id="Resource_ovaxk"]
+script = ExtResource("1_shimw")
+name = "Scale"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("8_bagu8")
+index = 15
+
+[sub_resource type="Resource" id="Resource_omhmv"]
+script = ExtResource("1_shimw")
+name = "Translate"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("9_coqhf")
+index = 16
+
+[sub_resource type="Resource" id="Resource_wrq5t"]
+script = ExtResource("1_shimw")
+name = "MethodCall"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("16_poxns")
+index = 17
+
+[sub_resource type="Resource" id="Resource_fuyi7"]
+script = ExtResource("1_shimw")
+name = "Wait"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("10_qvlaw")
+index = 18
+
+[sub_resource type="Resource" id="Resource_clcue"]
+script = ExtResource("1_shimw")
+name = "Executors"
+children = Array[ExtResource("1_shimw")]([SubResource("Resource_2nkcc"), SubResource("Resource_lic11"), SubResource("Resource_lshju"), SubResource("Resource_ovaxk"), SubResource("Resource_omhmv"), SubResource("Resource_wrq5t"), SubResource("Resource_fuyi7")])
+tree_color_override = Color(0, 0, 0, 1)
+index = 11
+
+[sub_resource type="Resource" id="Resource_y0o4q"]
+script = ExtResource("1_shimw")
+name = "Modifiers"
+children = Array[ExtResource("1_shimw")]([])
+tree_color_override = Color(0, 0, 0, 1)
+index = 19
+
+[resource]
+script = ExtResource("1_shimw")
+name = "UI Element"
+children = Array[ExtResource("1_shimw")]([SubResource("Resource_4v56w"), SubResource("Resource_lstfv"), SubResource("Resource_clcue"), SubResource("Resource_y0o4q")])
+tree_color_override = Color(0, 0, 0, 1)
+index = 0

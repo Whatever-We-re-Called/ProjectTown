@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://lgf0xleyksev"]
+
+[ext_resource type="Script" path="res://addons/ui_nodes/tree.gd" id="1_ekq5x"]
+[ext_resource type="Resource" uid="uid://c652i0vkm5xvd" path="res://addons/ui_nodes/elements.tres" id="2_s02v0"]
+[ext_resource type="Resource" uid="uid://77lftcnd0hw2" path="res://addons/ui_nodes/presets.tres" id="3_pvdkl"]
+[ext_resource type="Texture2D" uid="uid://nn8dqwrgw0mv" path="res://addons/ui_nodes/folder-folder.png" id="4_eg1xq"]
+
+[node name="UI Nodes" type="TabContainer"]
+script = ExtResource("1_ekq5x")
+elements = ExtResource("2_s02v0")
+presets = ExtResource("3_pvdkl")
+folder_icon = ExtResource("4_eg1xq")
+
+[connection signal="gui_input" from="." to="." method="_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

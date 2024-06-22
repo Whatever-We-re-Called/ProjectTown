@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="UIElementResource" load_steps=6 format=3 uid="uid://77lftcnd0hw2"]
+
+[ext_resource type="Script" path="res://addons/ui_nodes/ui_element_resource.gd" id="1_dk26q"]
+[ext_resource type="PackedScene" uid="uid://irl2ycmnbgl" path="res://ui/framework/presets/tooltip/tooltip.tscn" id="2_p276t"]
+[ext_resource type="PackedScene" uid="uid://dkw223f1svhpi" path="res://ui/framework/presets/ScaleHoverable.tscn" id="3_xuntm"]
+
+[sub_resource type="Resource" id="Resource_mpqcn"]
+script = ExtResource("1_dk26q")
+name = "Tooltip"
+children = Array[ExtResource("1_dk26q")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("2_p276t")
+index = 1
+
+[sub_resource type="Resource" id="Resource_8buo1"]
+script = ExtResource("1_dk26q")
+name = "ScaleHoverable"
+children = Array[ExtResource("1_dk26q")]([])
+tree_color_override = Color(0, 0, 0, 1)
+script_file = ExtResource("3_xuntm")
+index = 2
+
+[resource]
+script = ExtResource("1_dk26q")
+name = "Presets"
+children = Array[ExtResource("1_dk26q")]([SubResource("Resource_mpqcn"), SubResource("Resource_8buo1")])
+tree_color_override = Color(0, 0, 0, 1)
+index = 0

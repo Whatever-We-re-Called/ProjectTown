@@ -33,7 +33,7 @@ animations = [{
 
 [node name="Player" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_player")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target_player") groups=["cameras"]]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 5)
 script = ExtResource("4_vrhrx")
 target_player = NodePath("../CharacterBody3D")
@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134298, -0.110166)
 shape = SubResource("BoxShape3D_bh6o1")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" groups=["dialogue_characters"]]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.326694, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.125633, 0)
 layers = 2
 sprite_frames = SubResource("SpriteFrames_4b3sy")
 

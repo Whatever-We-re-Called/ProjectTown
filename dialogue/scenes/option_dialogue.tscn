@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0lhwx7yb41x0"]
+
+[ext_resource type="Script" path="res://dialogue/scenes/option_dialogue_bubble.gd" id="1_pf8hq"]
+[ext_resource type="Texture2D" uid="uid://ce3g4nk74wkjh" path="res://dialogue/assets/option.svg" id="2_q4eyf"]
+[ext_resource type="Texture2D" uid="uid://b64018bm3iqbf" path="res://dialogue/assets/bubble_tail.svg" id="3_j5nwc"]
+[ext_resource type="Texture2D" uid="uid://b82dsdckxd5h7" path="res://dialogue/assets/tail_middle.svg" id="4_woq25"]
+
+[node name="DialogueOption" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_pf8hq")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_right = 179.71
+offset_bottom = 25.0
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_q4eyf")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Tail" type="Node2D" parent="."]
+
+[node name="Top" type="Sprite2D" parent="Tail"]
+visible = false
+position = Vector2(-20, 7)
+rotation = -1.5708
+scale = Vector2(0.26061, 0.430553)
+texture = ExtResource("3_j5nwc")
+flip_v = true
+
+[node name="Middle" type="Sprite2D" parent="Tail"]
+visible = false
+position = Vector2(-21.37, 2.75363e-08)
+rotation = 1.5708
+scale = Vector2(0.163187, 0.386252)
+texture = ExtResource("4_woq25")
+
+[node name="Bottom" type="Sprite2D" parent="Tail"]
+visible = false
+position = Vector2(-20, -6)
+rotation = -1.5708
+scale = Vector2(0.26061, 0.430553)
+texture = ExtResource("3_j5nwc")
+flip_h = true
+flip_v = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 350.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Temporary Filler"
+fit_content = true
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_right = 8.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+flat = true
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]

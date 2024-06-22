@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkw223f1svhpi"]
+
+[ext_resource type="Script" path="res://ui/framework/models/ui_element.gd" id="1_34hh3"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_enter.gd" id="2_fmame"]
+[ext_resource type="Script" path="res://ui/framework/executors/scale.gd" id="3_a6r8v"]
+[ext_resource type="Script" path="res://ui/framework/actions/on_hover_exit.gd" id="4_v11h1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_34hh3")
+
+[node name="OnHoverEnter" type="Node2D" parent="." node_paths=PackedStringArray("associated_exit")]
+script = ExtResource("2_fmame")
+associated_exit = NodePath("../OnHoverExit")
+
+[node name="Scale" type="Node2D" parent="OnHoverEnter"]
+script = ExtResource("3_a6r8v")
+target = Vector2(1.2, 1.2)
+seconds = 0.25
+style = 1
+
+[node name="OnHoverExit" type="Node2D" parent="." node_paths=PackedStringArray("associated_enter")]
+script = ExtResource("4_v11h1")
+associated_enter = NodePath("../OnHoverEnter")
+
+[node name="Scale" type="Node2D" parent="OnHoverExit"]
+script = ExtResource("3_a6r8v")
+seconds = 0.25
+style = 1

@@ -21,7 +21,7 @@ class_name ConversationPiece
 ## Auto-Calculate must be set to false for this value to have any affect[br]
 ## [br]
 ## Value is the amount of seconds
-@export var timing_override: float = 5
+@export var timing_override: float = 0
 ## Should the dialogue automatically continue to the next queued dialogue[br]
 ## [br]
 ## A value of false will require user input before continuing

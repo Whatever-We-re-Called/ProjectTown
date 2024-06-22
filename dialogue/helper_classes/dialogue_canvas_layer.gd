@@ -25,7 +25,7 @@ func _process(_delta):
 					var pos = camera.unproject_position(node3d.global_position)
 					child.position = pos
 					visible = true
-			else:
+			elif child.get_child(0):
 				var node3d = child.get_child(0).instance.character
 				var pos = camera.unproject_position(node3d.global_position)
 				child.position = pos

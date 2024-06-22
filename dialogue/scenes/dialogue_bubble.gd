@@ -3,7 +3,7 @@ class_name DialogueBubble
 
 signal on_complete
 
-const SCALE_1_SIZE = 115
+const SCALE_1_SIZE = 115.0
 var instance: DialogueInstance
 var state = State.TYPING
 var awaiting_finish_timeout = true
@@ -54,7 +54,8 @@ func _get_target_bubble_height() -> float:
 
 
 func _get_target_bubble_scale() -> float:
-	return max(1, $Text/RichTextLabel.size.y / SCALE_1_SIZE)
+	print("height: ", $Text/RichTextLabel.get_content_height(), ", s1s: ", SCALE_1_SIZE, ", calc: ", $Text/RichTextLabel.get_content_height() / SCALE_1_SIZE)
+	return max(.4, $Text/RichTextLabel.get_content_height() / SCALE_1_SIZE * 1.3)
 
 
 func set_tail(position: DialogueManager.DialoguePosition):
@@ -118,6 +119,36 @@ func _set_state_finished():
 func _process(_delta):
 	$Text.position = $Bubble.position - ($Text.size / 2)
 	$Text.z_index = 1
+
+
+func set_next_text(text: String):
+	var starting_scale = $Bubble.scale.y
+	var starting_height = $Bubble.position.y
+	
+	$Text/RichTextLabel.visible_ratio = 0
+	$Text/RichTextLabel.text = text
+	await get_tree().process_frame
+	
+	var target_scale = _get_target_bubble_scale()
+	var target_height = -_get_target_bubble_height()
+	
+	print("scale: s: ", starting_scale, " t: ", target_scale)
+	
+	var target_time = abs(starting_scale - target_scale)
+	var time = 0
+	
+	print("time: ", target_time)
+	
+	while time <= target_time and target_time > 0.001:
+		time += get_process_delta_time() * 2
+		var c_scale = UIUtils.interpolate(starting_scale, target_scale, time / target_time, UIElement.InterpolationStyle.LINEAR)
+		var c_height = UIUtils.interpolate(starting_height, target_height, time / target_time, UIElement.InterpolationStyle.LINEAR)
+		if c_scale == 0.0 or c_height == 0.0:
+			break
+		$Bubble.scale.y = c_scale
+		$Bubble.position.y = c_height
+		await get_tree().process_frame
+
 
 enum State {
 	TYPING,

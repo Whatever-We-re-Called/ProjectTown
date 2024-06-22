@@ -2,6 +2,8 @@ extends Node
 class_name DialogueExecutor
 
 
+signal start_dialogue
+
 func _process(delta):
 	if not DialogueManager.current_dialogues.is_empty():
 		var last = DialogueManager.current_dialogues[DialogueManager.current_dialogues.size() - 1]
@@ -15,6 +17,7 @@ func _process(delta):
 				DialogueManager.current_dialogues.append(dialogue)
 				
 				last.add_child(dialogue)
+				start_dialogue.emit()
 				await get_tree().process_frame
 				dialogue.start_typing()
 		
@@ -33,6 +36,7 @@ func _process(delta):
 			var node2d = Node2D.new()
 			node2d.add_child(dialogue)
 			canvas.add_child(node2d)
+			start_dialogue.emit()
 			
 			await get_tree().process_frame
 			dialogue.start_typing()
@@ -46,6 +50,7 @@ func _process(delta):
 			DialogueManager.current_dialogues.append(holder)
 			
 			canvas.add_child(holder)
+			start_dialogue.emit()
 			
 		
 	
@@ -62,7 +67,28 @@ func _process(delta):
 
 func _free(dialogue):
 	if not dialogue.instance.next:
-		for d in DialogueManager.current_dialogues:
-			d.get_parent().queue_free()
-		DialogueManager.current_dialogues.clear()
+		if (dialogue.instance.previous
+			or DialogueManager.dialogue_queue.is_empty()
+			or dialogue is OptionHolder):
+				
+			
+			for d in DialogueManager.current_dialogues:
+				d.get_parent().queue_free()
+			DialogueManager.current_dialogues.clear()
+		else:
+			var next = DialogueManager.dialogue_queue.front()
+			if (dialogue.instance.character == next.character and
+				dialogue.instance.position == next.position
+				and next.parsed_text):
+					
+				await dialogue.set_next_text(next.parsed_text.to_bbcode_text())
+				DialogueManager.current_dialogues.clear()
+				await start_dialogue
+				await get_tree().process_frame
+				dialogue.get_parent().queue_free()
+				
+			else:
+				for d in DialogueManager.current_dialogues:
+					d.get_parent().queue_free()
+				DialogueManager.current_dialogues.clear()
 		
